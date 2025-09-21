@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Анимация появления элементов при скролле
+document.addEventListener("DOMContentLoaded", function () { 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -16,8 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".section, .project-card").forEach((section) => {
     observer.observe(section);
   });
-
-  // Создание плавающих шариков фона
+ 
   const bubblesContainer = document.querySelector(".bg-bubbles");
   if (bubblesContainer) {
     for (let i = 0; i < 15; i++) {
