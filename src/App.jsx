@@ -1,9 +1,10 @@
-import "./App.css";
+import WindowsPortfolio from "./pages/WindowsPortfolio/WindowsPortfolio";
+import "./index.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">1</header>
+      <WindowsPortfolio />
     </div>
   );
 }

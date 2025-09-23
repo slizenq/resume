@@ -1,0 +1,244 @@
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: rgba(32, 32, 32, 0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.taskbar-left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+}
+
+.taskbar-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.start-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  margin-right: 6px;
+}
+
+.start-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.windows-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.search-bar {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: rgba(255, 255, 255, 0.7);
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-right: 12px;
+  min-width: 240px;
+}
+
+.search-bar:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.search-icon {
+  font-size: 14px;
+}
+
+.search-text {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.taskbar-apps {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.taskbar-app {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.taskbar-app:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.taskbar-app.active {
+  color: white;
+}
+
+.taskbar-app.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 1px;
+}
+
+.taskbar-app i {
+  font-size: var(--icon-size, 20px);
+}
+
+.system-tray {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 4px;
+}
+
+.tray-icons {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.tray-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.tray-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.time-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  height: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 6px;
+}
+
+.time-display:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.time {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.date {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.desktop-peek {
+  width: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+}
+
+.peek-line {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Анимации для индикатора приложений */
+@keyframes appFlash {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.taskbar-app.notification {
+  position: relative;
+}
+
+.taskbar-app.notification::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  background: #0078d7;
+  border-radius: 50%;
+  animation: appFlash 1.5s infinite;
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 1000px) {
+  .search-bar {
+    min-width: 180px;
+  }
+
+  .taskbar-app {
+    width: 42px;
+  }
+}
+
+@media (max-width: 800px) {
+  .search-bar {
+    display: none;
+  }
+}
